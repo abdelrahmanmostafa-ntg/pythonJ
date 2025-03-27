@@ -17,7 +17,7 @@
 
     <properties>
         <java.version>17</java.version>
-        <jython.version>2.7.3</jython.version>
+        <graalvm.version>23.0.0</graalvm.version>
     </properties>
 
     <dependencies>
@@ -44,9 +44,14 @@
         
         <!-- Python Execution -->
         <dependency>
-            <groupId>org.python</groupId>
-            <artifactId>jython-standalone</artifactId>
-            <version>${jython.version}</version>
+            <groupId>org.graalvm.polyglot</groupId>
+            <artifactId>polyglot</artifactId>
+            <version>23.0.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.graalvm.python</groupId>
+            <artifactId>python-embedding</artifactId>
+            <version>23.0.0</version>
         </dependency>
         
         <!-- Utilities -->
