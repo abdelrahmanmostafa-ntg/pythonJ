@@ -14,20 +14,20 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
-            .csrf().disable()
-            .authorizeHttpRequests()
+            .csrf(csrf -> csrf.disable())
+            .authorizeHttpRequests(auth -> auth
                 .requestMatchers("/", "/index.html", "/login.html", "/register.html", "/static/**").permitAll()
                 .requestMatchers("/api/auth/**").permitAll()
                 .requestMatchers("/api/**").authenticated()
                 .anyRequest().authenticated()
-            .and()
-            .httpBasic()
-            .and()
-            .formLogin()
+            )
+            .httpBasic(basic -> {})
+            .formLogin(form -> form
                 .loginPage("/login.html")
                 .loginProcessingUrl("/api/auth/login")
                 .defaultSuccessUrl("/", true)
-                .failureUrl("/login.html?error=true");
+                .failureUrl("/login.html?error=true")
+            );
         return http.build();
     }
 

@@ -21,12 +21,14 @@ public class TestController {
         this.userRepository = userRepository;
     }
 
-    @GetMapping("/python")
+    @GetMapping("/python") 
     public String testPythonExecution() throws Exception {
         String pythonCode = "import pandas as pd\n" +
                           "df = pd.DataFrame({'A': [1, 2, 3], 'B': [4, 5, 6]})\n" +
                           "print(df.describe())";
-        return pythonService.executePythonCode(pythonCode);
+        // Use first user's ID for testing
+        User firstUser = userRepository.findAll().stream().findFirst().orElseThrow();
+        return pythonService.executePython(pythonCode, firstUser.getId());
     }
 
     @GetMapping("/users")
