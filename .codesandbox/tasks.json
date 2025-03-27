@@ -1,0 +1,13 @@
+{
+  "setupTasks": [
+    "mkdir -p /project/sandbox/user-workspace",
+    "cd /opt/vscodium && ./bin/code-server --port 1025 --without-connection-token --accept-server-license-terms --host 0.0.0.0"
+  ],
+  "tasks": {
+    "start-vscode": {
+      "name": "Start VSCode",
+      "command": "if ! nc -z localhost 1025 2>/dev/null; then cd /opt/vscodium && ./bin/code-server --port 1025 --without-connection-token --accept-server-license-terms --host 0.0.0.0; else echo 'VSCode server is already running on port 1025'; fi",
+      "runAtStart": true
+    }
+  }
+}
