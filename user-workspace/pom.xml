@@ -42,12 +42,7 @@
             <scope>runtime</scope>
         </dependency>
         
-        <!-- Python Execution -->
-        <dependency>
-            <groupId>org.graalvm.python</groupId>
-            <artifactId>python-embedding</artifactId>
-            <version>${graalvm.version}</version>
-        </dependency>
+        <!-- GraalVM Polyglot API -->
         <dependency>
             <groupId>org.graalvm.sdk</groupId>
             <artifactId>graal-sdk</artifactId>

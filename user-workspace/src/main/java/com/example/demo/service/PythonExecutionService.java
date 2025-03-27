@@ -42,9 +42,9 @@ public class PythonExecutionService {
             .engine(engine)
             .allowAllAccess(false)
             .allowIO(false)
+            .option("python.ForceImportSite", "true")
             .build()) {
             
-            context.eval("python", createRestrictedEnvironment());
             CompletableFuture<Value> future = CompletableFuture.supplyAsync(() -> 
                 context.eval("python", code)
             );
@@ -104,17 +104,4 @@ public class PythonExecutionService {
         }
     }
 
-    private String createRestrictedEnvironment() {
-        return """
-            import numpy as np
-            import pandas as pd
-            from sklearn import *
-            
-            # Override dangerous builtins
-            __import__ = None
-            open = None
-            eval = None
-            exec = None
-            """;
-    }
 }
