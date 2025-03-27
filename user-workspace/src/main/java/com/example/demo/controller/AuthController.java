@@ -17,6 +17,11 @@ public class AuthController {
         this.passwordEncoder = passwordEncoder;
     }
 
+    @GetMapping("/check")
+    public ResponseEntity<?> checkAuth() {
+        return ResponseEntity.ok().build();
+    }
+
     @PostMapping("/register")
     public ResponseEntity<?> registerUser(@RequestBody User user) {
         if (userRepository.existsByUsername(user.getUsername())) {
