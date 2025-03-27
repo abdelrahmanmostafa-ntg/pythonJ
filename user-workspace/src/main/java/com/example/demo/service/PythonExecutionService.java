@@ -93,8 +93,7 @@ public class PythonExecutionService {
 
     private void validateCodeSecurity(String code) throws Exception {
         for (String module : FORBIDDEN_MODULES) {
-            if (code.contains("import " + module) || 
-                code.contains("from " + module)) {
+            if (code.contains("import " + module) || code.contains("from " + module)) {
                 throw new Exception("Forbidden module: " + module);
             }
         }
@@ -103,5 +102,4 @@ public class PythonExecutionService {
             throw new Exception("Dynamic code evaluation is not allowed");
         }
     }
-
 }
