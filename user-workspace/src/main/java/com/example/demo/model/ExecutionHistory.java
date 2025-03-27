@@ -29,4 +29,25 @@ public class ExecutionHistory {
     private Instant createdAt;
     
     private Long executionTimeMs;
+
+    // Additional methods for specific setters needed by service layer
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
+    }
+
+    public void setResult(String result) {
+        this.result = result;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public void setExecutionTimeMs(Long executionTimeMs) {
+        this.executionTimeMs = executionTimeMs;
+    }
 }

@@ -7,7 +7,7 @@ import com.example.demo.repository.UserRepository;
 import org.graalvm.polyglot.Context;
 import org.graalvm.polyglot.Engine;
 import org.graalvm.polyglot.Value;
-import org.springframework.beans.factory.annotation.Value;
+import org.springframework.beans.factory.annotation.Value as SpringValue;
 import org.springframework.stereotype.Service;
 import lombok.RequiredArgsConstructor;
 
@@ -22,7 +22,7 @@ public class PythonExecutionService {
     private final UserRepository userRepository;
     private final ExecutionHistoryRepository executionHistoryRepository;
     
-    @Value("${python.execution.timeout:5000}")
+    @SpringValue("${python.execution.timeout:5000}")
     private long timeout;
     
     private static final Pattern TEMPLATE_PATTERN = Pattern.compile("\\{\\{(\\w+)\\}\\}");
