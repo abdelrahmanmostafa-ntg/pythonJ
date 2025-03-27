@@ -24,6 +24,9 @@ public class User implements UserDetails {
     
     @Column(nullable = false)
     private String password;
+    private boolean emailVerified = false;
+    private String verificationToken;
+    private Instant verificationTokenExpiry;
     
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
